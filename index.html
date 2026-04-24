@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexa — Digital Growth Agency</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #fff; line-height: 1.6; overflow-x: hidden; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* Navigation */
+        nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(10,10,10,0.8); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .nav-inner { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; max-width: 1200px; margin: 0 auto; }
+        .logo { font-size: 24px; font-weight: 800; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-links { display: flex; gap: 32px; list-style: none; }
+        .nav-links a { color: #a0a0a0; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: #fff; }
+        .nav-cta { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; border: none; padding: 10px 24px; border-radius: 8px; font-weight: 600; font-size: 14px; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 40px rgba(102,126,234,0.3); }
+
+        /* Hero */
+        .hero { padding: 160px 24px 100px; text-align: center; position: relative; }
+        .hero::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(102,126,234,0.15) 0%, transparent 70%); z-index: -1; }
+        .hero-badge { display: inline-block; padding: 8px 16px; background: rgba(102,126,234,0.1); border: 1px solid rgba(102,126,234,0.2); border-radius: 100px; font-size: 13px; color: #667eea; font-weight: 500; margin-bottom: 24px; }
+        .hero h1 { font-size: clamp(40px, 6vw, 72px); font-weight: 800; line-height: 1.1; margin-bottom: 24px; letter-spacing: -0.02em; }
+        .hero h1 span { background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 18px; color: #a0a0a0; max-width: 600px; margin: 0 auto 40px; line-height: 1.7; }
+        .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .btn-primary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; padding: 16px 32px; border-radius: 12px; font-weight: 600; font-size: 16px; text-decoration: none; display: inline-block; transition: transform 0.3s, box-shadow 0.3s; border: none; cursor: pointer; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 20px 60px rgba(102,126,234,0.4); }
+        .btn-secondary { background: transparent; color: #fff; padding: 16px 32px; border-radius: 12px; font-weight: 600; font-size: 16px; text-decoration: none; display: inline-block; border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s; }
+        .btn-secondary:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.2); }
+
+        /* Stats */
+        .stats { padding: 60px 24px; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; text-align: center; }
+        .stat h3 { font-size: 36px; font-weight: 800; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
+        .stat p { color: #a0a0a0; font-size: 14px; }
+
+        /* Services */
+        .services { padding: 100px 24px; }
+        .section-header { text-align: center; margin-bottom: 80px; }
+        .section-header h2 { font-size: clamp(28px, 4vw, 48px); font-weight: 800; margin-bottom: 16px; }
+        .section-header p { color: #a0a0a0; font-size: 18px; max-width: 500px; margin: 0 auto; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+        .service-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 40px; transition: all 0.3s; }
+        .service-card:hover { background: rgba(255,255,255,0.05); transform: translateY(-5px); border-color: rgba(102,126,234,0.3); }
+        .service-icon { width: 48px; height: 48px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; font-size: 20px; }
+        .service-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+        .service-card p { color: #a0a0a0; font-size: 15px; line-height: 1.7; }
+
+        /* Work */
+        .work { padding: 100px 24px; background: rgba(255,255,255,0.02); }
+        .work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 32px; margin-top: 60px; }
+        .work-item { border-radius: 20px; overflow: hidden; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); transition: transform 0.3s; }
+        .work-item:hover { transform: scale(1.02); }
+        .work-img { width: 100%; height: 240px; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); display: flex; align-items: center; justify-content: center; font-size: 48px; }
+        .work-content { padding: 32px; }
+        .work-content h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+        .work-content p { color: #a0a0a0; font-size: 14px; }
+        .work-tag { display: inline-block; padding: 6px 12px; background: rgba(102,126,234,0.1); border-radius: 6px; font-size: 12px; color: #667eea; font-weight: 500; margin-top: 16px; }
+
+        /* Testimonials */
+        .testimonials { padding: 100px 24px; }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 60px; }
+        .testimonial { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 40px; }
+        .stars { color: #fbbf24; margin-bottom: 20px; font-size: 18px; }
+        .testimonial p { color: #d0d0d0; font-size: 16px; line-height: 1.7; margin-bottom: 24px; }
+        .testimonial-author { display: flex; align-items: center; gap: 16px; }
+        .author-avatar { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px; }
+        .author-info h4 { font-size: 15px; font-weight: 600; }
+        .author-info span { font-size: 13px; color: #a0a0a0; }
+
+        /* CTA */
+        .cta { padding: 100px 24px; text-align: center; }
+        .cta-box { max-width: 800px; margin: 0 auto; background: linear-gradient(135deg, rgba(102,126,234,0.1) 0%, rgba(118,75,162,0.1) 100%); border: 1px solid rgba(102,126,234,0.2); border-radius: 32px; padding: 80px 40px; position: relative; overflow: hidden; }
+        .cta-box::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(102,126,234,0.1) 0%, transparent 70%); z-index: 0; }
+        .cta-box h2 { font-size: clamp(28px, 4vw, 48px); font-weight: 800; margin-bottom: 20px; position: relative; z-index: 1; }
+        .cta-box p { color: #a0a0a0; font-size: 18px; margin-bottom: 40px; position: relative; z-index: 1; }
+        .cta-box .btn-primary { position: relative; z-index: 1; }
+
+        /* Footer */
+        footer { padding: 60px 24px 40px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; color: #666; font-size: 14px; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero { padding: 120px 24px 60px; }
+            .work-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-inner">
+            <div class="logo">Nexa</div>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+            </ul>
+            <button class="nav-cta">Get Started</button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">Available for new projects</div>
+            <h1>We build <span>high-converting</span> digital experiences</h1>
+            <p>Strategic design and development for startups that want to stand out, convert visitors, and scale fast.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn-primary">Start Your Project</a>
+                <a href="#work" class="btn-secondary">View Our Work</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat">
+                    <h3>$2M+</h3>
+                    <p>Revenue generated for clients</p>
+                </div>
+                <div class="stat">
+                    <h3>47</h3>
+                    <p>Projects delivered</p>
+                </div>
+                <div class="stat">
+                    <h3>98%</h3>
+                    <p>Client satisfaction rate</p>
+                </div>
+                <div class="stat">
+                    <h3>24h</h3>
+                    <p>Average response time</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Services that drive growth</h2>
+                <p>Everything you need to launch, convert, and scale — without the agency bloat.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">&#128640;</div>
+                    <h3>Landing Pages</h3>
+                    <p>High-converting, pixel-perfect landing pages designed to turn visitors into customers. Built for speed and SEO.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">&#9881;</div>
+                    <h3>Web Applications</h3>
+                    <p>Custom web apps with modern frameworks. From dashboards to marketplaces, built to handle real users.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">&#128161;</div>
+                    <h3>AI Integration</h3>
+                    <p>Smart chatbots, automation workflows, and AI-powered features that reduce support load and increase engagement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="work" id="work">
+        <div class="container">
+            <div class="section-header">
+                <h2>Selected work</h2>
+                <p>Real results for real businesses. Every project is built to perform.</p>
+            </div>
+            <div class="work-grid">
+                <div class="work-item">
+                    <div class="work-img">&#9749;</div>
+                    <div class="work-content">
+                        <h3>Café Medina</h3>
+                        <p>Brand identity and landing page for a premium Tunisian coffee roaster.</p>
+                        <span class="work-tag">Landing Page</span>
+                    </div>
+                </div>
+                <div class="work-item">
+                    <div class="work-img">&#128170;</div>
+                    <div class="work-content">
+                        <h3>FitPro Coaching</h3>
+                        <p>Conversion-focused website and booking system for an online fitness coach.</p>
+                        <span class="work-tag">Web App</span>
+                    </div>
+                </div>
+                <div class="work-item">
+                    <div class="work-img">&#9993;</div>
+                    <div class="work-content">
+                        <h3>InboxAI</h3>
+                        <p>SaaS landing page with interactive demos and waitlist integration.</p>
+                        <span class="work-tag">SaaS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>What clients say</h2>
+                <p>Don't take our word for it. Here's what founders say about working with us.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"Nexa rebuilt our landing page and our conversion rate doubled in two weeks. The attention to detail is unreal."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JD</div>
+                        <div class="author-info">
+                            <h4>James Davidson</h4>
+                            <span>Founder, TaskFlow</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"Fast, professional, and actually understood our product. Best investment we made pre-launch."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SM</div>
+                        <div class="author-info">
+                            <h4>Sarah Miller</h4>
+                            <span>CEO, GrowthKit</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"The AI chatbot integration alone saved us 10 hours of support work every week. Incredible ROI."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AK</div>
+                        <div class="author-info">
+                            <h4>Ahmed K.</h4>
+                            <span>Founder, NexCart</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <div class="cta-box">
+                <h2>Ready to scale?</h2>
+                <p>Let's build something that converts. Limited spots available for May 2026.</p>
+                <a href="#" class="btn-primary">Book a Free Call</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Nexa Digital Agency. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
